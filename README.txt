@@ -7,6 +7,7 @@ Download Vagrant: https://www.vagrantup.com/downloads.html
 Download VM configurations https://github.com/udacity/fullstack-nanodegree-vm
 
 To access Vagrant run the following commands:
+
 ```
 vagrant up
 ```
