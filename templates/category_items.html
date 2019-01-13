@@ -1,0 +1,55 @@
+{% extends "main.html" %}
+{% block content %}
+	<div class="row">
+		<div class="col-md-3 padding-top">
+				<h2>categories</h2>
+				{% for category in categories %}
+				<ul>
+					<li>
+						<a href = "{{url_for('browse_category_items', category_title = category.title)}}">
+							<h5>{{category.title}}</h5>
+						</a>
+					</li>
+				</ul>
+			{% endfor %}
+		</div>
+		<div class="col-md-7 padding-top">
+		<h2>{{selected_category.title}}</h2>
+		{% for item in items %}
+		<ul>
+			<li>
+				<a href="{{url_for('browse_item', category_title = selected_category.title, item_title = item.title)}}">
+					<h5>{{item.title}}</h5>
+				</a>
+			</li>
+		</ul>
+	    {% endfor %}
+
+		
+		</div>
+	</div>
+{% endblock %}
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">-->
+	</head>
+	<body>
+		<div class="container">
+			<p>
+                Category title
+				ii. List of items and its details
+				iii. Add new item
+				iv. Edit an item
+				v. Delete an item
+            </p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+{% block content %}
+	<div class="row">
+			<div class = 'flash'>
+					{% with messages = get_flashed_messages() %}
+					{% if messages %}
+					  <ul>
+					  {% for message in messages %}
+						  <li> <strong> {{ message }} </strong> </li>
+					  {% endfor %}
+					  </ul>
+					  {% endif %}
+				  {% endwith %}
+			  
+					  </div>
+		<div class="col-md-3  padding-top">
+			<h2>categories</h2>
+			{% for category in categories %}
+			<ul>
+				<li>
+					<a href = "{{url_for('browse_category_items', category_title = category.title)}}">
+						{{category.title}}
+					</a>
+				</li>
+			</ul>
+		{% endfor %}
+		</div>
+
+		<div class="col-md-9  padding-top">
+				<h2>Latest items</h2>
+				{% set category_title ={ 'title' : 'title' } %}
+				<ul>
+				{% for item in items %}
+					{% for category in categories %}
+						{% if category.id == item.category_id %}
+							{% if category_title.update({'title' : category.title }) %}
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+					
+						<li style="float:left;">
+							<a href="{{url_for('browse_item', category_title = category_title.title, item_title = item.title)}}">
+								{{item.title}}
+							</a>
+						</li>
+						<p>({{category_title.title}})</p>
+				{% endfor %}
+				</ul>
+		</div>
+		
+	</div>
+{% endblock %}
