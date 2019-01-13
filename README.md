@@ -12,7 +12,9 @@ To access Vagrant run the following commands:
 vagrant up
 ```
 
-```vagrant ssh```
+```
+vagrant ssh
+```
 
 To run the application
 1. Run the database setup using the command
